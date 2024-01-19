@@ -11,9 +11,6 @@ export class Ship {
     };
 
     isSunk(length, hitsTaken) {
-        if(hitsTaken <= 1) {
-            return false
-        }
         if(length == hitsTaken ) {
             return true
         }   
