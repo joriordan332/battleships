@@ -14,8 +14,11 @@ import { Ship } from '../ship';
         let y = 2;
         board.placeShip(admiral, x, y);
         expect(board.getGameBoard()[2][1]).toEqual({
-        shipName: admiral,
+            shipName: admiral
         });
+        expect(board.getGameBoard()[3][1]).toEqual({
+            shipName: admiral
+          });
     })
 
     

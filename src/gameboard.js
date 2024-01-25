@@ -11,11 +11,8 @@ export class Gameboard {
             for (let j = 0; j < 10; j++) {
               arrayItem.push({ shipName: undefined});
             }
-            
             arr.push(arrayItem);
-            console.log(arr)
             arrayItem = [];
-            
           }
         return arr
     }
