@@ -8,17 +8,26 @@ import { Ship } from '../ship';
     });
 
     test('to check a ship has been placed at specific coordinates', () => {
-        const board = new Gameboard();
+        const newGameboard = new Gameboard();
         const admiral = new Ship(2);
         let x = 1;
         let y = 2;
-        board.placeShip(admiral, x, y);
-        expect(board.getGameBoard()[2][1]).toEqual({
+        newGameboard.placeShip(admiral, x, y);
+        expect(newGameboard.getGameBoard()[2][1]).toEqual({
             shipName: admiral
         });
-        expect(board.getGameBoard()[3][1]).toEqual({
+        expect(newGameboard.getGameBoard()[3][1]).toEqual({
             shipName: admiral
           });
     })
+
+    test("gameboard can receieve attack when there is a ship", () => {
+        const newGameboard = new Gameboard();
+        const admiral = new Ship(2);
+        newGameboard.placeShip(admiral, 0, 0);
+        expect(newGameboard.receiveAttack(0, 0)).toBe(1)
+        });
+  
+
 
     

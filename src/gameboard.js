@@ -2,6 +2,7 @@ import { Ship } from './ship';
 export class Gameboard {
     constructor() {
       this.gameBoardArray = this.createGameboard();
+      this.missedAttacks = []
     }
 
     createGameboard() {
@@ -27,4 +28,13 @@ export class Gameboard {
       }
     }
 
-}
+    receiveAttack(x, y) {
+      if (this.gameBoardArray[y][x].shipName != undefined) {
+        this.gameBoardArray[y][x].shipName.hit()
+        return 1
+      }
+      else {
+        this.missedAttacks.push({x: x, y: y})
+      }
+    }
+}3
