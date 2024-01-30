@@ -51,9 +51,7 @@ export class Gameboard {
             return false
           }
           else return true
-        }
-        
-      
+          } 
+      }
     }
-  }
 }
