@@ -30,11 +30,30 @@ export class Gameboard {
 
     receiveAttack(x, y) {
       if (this.gameBoardArray[y][x].shipName != undefined) {
-        this.gameBoardArray[y][x].shipName.hit()
+        this.gameBoardArray[y][x].shipName.hit();
+        this.gameBoardArray[y][x] = true
         return 1
       }
       else {
         this.missedAttacks.push({x: x, y: y})
+        this.gameBoardArray[y][x] = false
       }
     }
-}3
+
+    getMissedAttacksArray() {
+      return this.missedAttacks;
+    }
+
+    checkIfAllShipsSunk() {
+      for (let i = 0; i < 10; i++) {
+        for (let j = 0; j < 10; j++) {
+          if (this.gameBoardArray[i][j].shipName != undefined) {
+            return false
+          }
+          else return true
+        }
+        
+      
+    }
+  }
+}

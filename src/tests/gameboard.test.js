@@ -21,13 +21,19 @@ import { Ship } from '../ship';
           });
     })
 
-    test("gameboard can receieve attack when there is a ship", () => {
+    test('gameboard can receieve attack when there is a ship', () => {
         const newGameboard = new Gameboard();
         const admiral = new Ship(2);
         newGameboard.placeShip(admiral, 0, 0);
         expect(newGameboard.receiveAttack(0, 0)).toBe(1)
         });
   
-
+    test('are all the ships on the board sunk?', () => {
+        const newGameboard = new Gameboard();
+        const admiral = new Ship(1, 0, false);
+        newGameboard.placeShip(admiral, 0, 0);
+        newGameboard.receiveAttack(0, 0)
+        expect(newGameboard.checkIfAllShipsSunk()).toBe(true)
+    })
 
     
