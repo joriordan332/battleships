@@ -29,22 +29,13 @@ export class Player {
         computer.turn.set(false);
     }
 
-    legalMove(x, y) {
-        if(this.gameBoardArray[x] || this.gameBoardArray[y] < 0) {
-            return false
-        }
-        if (this.gameBoardArray[x] || this.gameBoardArray[y] > 9) {
-            return false
-        }
-        else {
-            return true
-        }
-    }
-
     computerMoves() {
-        let x = Math.floor(Math.random() * 10);
-        let y = Math.floor(Math.random() * 10);
+        let x = Math.floor(Math.random() * 0);
+        let y = Math.floor(Math.random() * 0);
+        if (this.attacks.includes({x: 0, y: 0})) {
+            return false
+        } else 
         this.attacks.push({x: x, y: y})
-    return [x, y];
+        return [x, y];
     }
 }

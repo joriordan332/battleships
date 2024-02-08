@@ -13,8 +13,13 @@ test('Object:', () => {
     expect(player1.turn).toBe('true')
 });
 
-test('make sure the computer can only make valid moves', () => {
-    const newGameboard = new Gameboard();
-    expect(newGameboard.legalMove(20, 0)).toBe(false);
-    expect(newGameboard.legalMove(9, 0)).toBe(true);
-})
+test('see if our random computer function coordinate is working ', () => {
+    const computer = new Player()
+    computer.attacks.push({x: 0, y: 0})
+    for (let i = 0; i < 99; i += 1) computer.computerMoves()
+    expect(computer.attacks.length).toBe(100);
+    expect(computer.computerMoves()).toBe(false);
+});
+
+
+
