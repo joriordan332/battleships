@@ -30,12 +30,23 @@ export class Player {
     }
 
     computerMoves() {
-        let x = Math.floor(Math.random() * 0);
-        let y = Math.floor(Math.random() * 0);
-        if (this.attacks.includes({x: 0, y: 0})) {
-            return false
-        } else 
-        this.attacks.push({x: x, y: y})
-        return [x, y];
+        if (this.attacks.length === 100) return false;
+        const cords = [
+          Math.floor(Math.random() * 10),
+          Math.floor(Math.random() * 10),
+        ];
+        if (this.uniqueCoordinates(cords)) {
+          this.attacks.push(cords);
+          return cords;
+        }
+        return this.computerMoves();
     }
+
+    uniqueCoordinates(coordinates) {
+        for (let i = 0; i < this.attacks.length; i += 1)
+      if (this.isEqual(this.attacks[i], coordinates)) return false;
+    return true;
+    }
+
+    isEqual = (a, b) => a[0] === b[0] && b[1] === a[1];
 }

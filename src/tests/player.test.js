@@ -15,8 +15,7 @@ test('Object:', () => {
 
 test('see if our random computer function coordinate is working ', () => {
     const computer = new Player()
-    computer.attacks.push({x: 0, y: 0})
-    for (let i = 0; i < 99; i += 1) computer.computerMoves()
+    for (let i = 0; i < 100; i += 1) computer.computerMoves()
     expect(computer.attacks.length).toBe(100);
     expect(computer.computerMoves()).toBe(false);
 });
