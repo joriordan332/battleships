@@ -37,6 +37,7 @@ export class Gameboard {
       else {
         this.missedAttacks.push({x: x, y: y})
         this.gameBoardArray[y][x] = false
+        return 0
       }
     }
 
