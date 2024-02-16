@@ -4,18 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Battleship</title>
-  <link rel="stylesheet" href="style.css">
   <script src="main.js" defer></script>
 </head>
 <body>
   <div class="container">
-    <div class="playerBoard">
-
+    <div class="mainPage" id="mainPage">
+      <h1>Battleship</h1>
+      <div class="player">
+        <div class="playerBoard"></div>
+        <div id="playerName" class="playerName"></div>
+      </div>
+      <div class="computer">
+        <div class="computerBoard"></div>
+        <div class="computerName">Computer</div>
+      </div>
     </div>
-    <div class="computerBoard">
-      
-    </div>
+    
 
+    <div class="playerSelection" id="playerSelection">
+      <h1>Battleship</h1>
+      <input id="playerOneInput" type="text" placeholder="Enter Player Name" required>
+      <button id="submit" type="submit" value="submit">Start</button>
+    </div>
   </div>
 </body>
 </html>

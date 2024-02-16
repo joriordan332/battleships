@@ -12,7 +12,7 @@ for(let i = 0; i < 10; i++) {
         const cell = document.createElement('div');
         cell.classList.add('cell-p1');
         cell.setAttribute("id", `p1-cell${j}`);
-        row.appendChild(cell);
+        playerBoard.appendChild(cell);
       }
     }
     for(let i = 0; i < 10; i++) {
@@ -25,8 +25,16 @@ for(let i = 0; i < 10; i++) {
           const cell = document.createElement('div');
           cell.classList.add('cell-p2');
           cell.setAttribute("id", `p2-cell${j}`);
-          row.appendChild(cell);
+          computerBoard.appendChild(cell);
         }
-      }    
+      } 
+});
+const submit = document.getElementById('submit');
+submit.addEventListener('click', () => {
+  document.getElementById('mainPage').style.display = 'block';
+  document.getElementById('playerSelection').style.display = 'none';
 
-})
+  const playerOneInput = document.getElementById('playerOneInput').value;
+  const playerName = document.getElementById('playerName');
+  playerName.innerHTML = `${playerOneInput}`;
+});
