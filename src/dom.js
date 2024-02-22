@@ -29,6 +29,7 @@ for(let i = 0; i < 10; i++) {
         }
       } 
 });
+
 const submit = document.getElementById('submit');
 submit.addEventListener('click', () => {
   document.getElementById('mainPage').style.display = 'block';
@@ -38,3 +39,4 @@ submit.addEventListener('click', () => {
   const playerName = document.getElementById('playerName');
   playerName.innerHTML = `${playerOneInput}`;
 });
+

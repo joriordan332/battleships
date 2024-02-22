@@ -29,6 +29,8 @@ export class Player {
         computer.turn.set(false);
     }
 
+ 
+
     computerMoves() {
         if (this.attacks.length === 100) return false;
         const cords = [
@@ -49,4 +51,7 @@ export class Player {
     }
 
     isEqual = (a, b) => a[0] === b[0] && b[1] === a[1];
+
+    
 }
+

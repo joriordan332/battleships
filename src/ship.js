@@ -5,7 +5,6 @@ export class Ship {
         this.sunk = sunk;
     }
 
-
     getShip() {
         return this.ship;
       }
