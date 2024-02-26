@@ -10,6 +10,8 @@
   <div class="container">
     <div class="mainPage" id="mainPage">
       <h1>Battleship</h1>
+      <button class="shipButtons">Place ships</button>
+      <div class="userPrompt" id="userPrompt"></div>
       <div class="player">
         <div id="playerBoard" class="playerBoard"></div>
         <div id="playerName" class="playerName"></div>
@@ -17,6 +19,35 @@
       <div class="computer">
         <div id="computerBoard" class="computerBoard"></div>
         <div class="computerName">Computer</div>
+      </div>
+      <div class="addShips" id="addShips">
+        <div class="ship" id="battleship" draggable="true">
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+        </div>    
+        <div class="ship" id="carrier" draggable="true">
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+        </div>
+        <div class="ship" id="submarine" draggable="true">
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+        </div>
+        <div class="ship" id="destroyer" draggable="true">
+          <div class="block"></div>
+          <div class="block"></div>
+          <div class="block"></div>
+        </div>
+        <div class="ship" id="patrolboat" draggable="true">
+          <div class="block"></div>
+          <div class="block"></div>
+        </div>
       </div>
     </div>
     
@@ -27,5 +58,6 @@
       <button id="submit" type="submit" value="submit">Start</button>
     </div>
   </div>
+  
 </body>
 </html>

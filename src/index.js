@@ -1,10 +1,11 @@
-import { createGameboard } from './dom';
+import { createGameboard, dropShip } from './dom';
 import { Ship } from './ship';
 import { Player } from './player';
-import { startGame } from './gameControl';
+import { startGame, renderPlayerFleet} from './gameControl';
 import './styles/style.css';
 
 startGame()
 createGameboard();
+
 
 

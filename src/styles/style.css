@@ -9,6 +9,27 @@
     padding-bottom: 20px;
 }
 
-.row-p1, .cell-p1, .row-p2, .cell-p2 {
+.cell {
     border: 1px solid #39FF14;
 }
+
+.fleet {
+    color: red;
+}
+
+.block{
+    background-color: rgb(89, 179, 71);
+    width: 25px;
+    height: 25px;
+    border: #5A5A5A solid 1px;
+  }
+
+
+  .dragging {
+    opacity: 0.5;
+  }
+
+  .ship {
+    width: 25px;
+    padding-bottom: 20px;
+  }
