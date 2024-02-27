@@ -22,6 +22,19 @@ export class Gameboard {
       return this.gameBoardArray;
     }
 
+    chechIfShipPlacementIsValid(length, x, y) {
+      if (x > 10 || x < 0 || y > 10 || y < 0 || y + length > 10) {
+        return false;
+      } else {
+        for (let i = y; i < y + length; i++) {
+          if (this.gameBoardArray[i][x].shipName != undefined) {
+            return false;
+          } 
+        }
+        return true;
+      }
+    }
+
     placeShip(ship, x, y) {
       for (let i = 0; i < ship.length; i++) {
         this.gameBoardArray[y + i][x].shipName = ship;
