@@ -10,7 +10,7 @@ export class Gameboard {
         let arrayItem = [];
         for (let i = 0; i < 10; i++) {
             for (let j = 0; j < 10; j++) {
-              arrayItem.push({ shipName: undefined});
+              arrayItem.push({ shipName: undefined, shipIndex: undefined });
             }
             arr.push(arrayItem);
             arrayItem = [];
@@ -38,19 +38,17 @@ export class Gameboard {
     placeShip(ship, x, y) {
       for (let i = 0; i < ship.length; i++) {
         this.gameBoardArray[y + i][x].shipName = ship;
+        this.gameBoardArray[y + i][x].shipIndex = i;
       }
     }
 
     receiveAttack(x, y) {
-      if (this.gameBoardArray[y][x].shipName != undefined) {
-        this.gameBoardArray[y][x].shipName.hit();
-        this.gameBoardArray[y][x] = true
-        return 1
-      }
-      else {
-        this.missedAttacks.push({x: x, y: y})
-        this.gameBoardArray[y][x] = false
-        return 0
+      if (this.gameBoardArray[y][x].shipName == undefined) {
+        this.missedAttacks.push({ x: x, y: y });
+      } else {
+        this.gameBoardArray[y][x].shipName.hit(
+          this.gameBoardArray[y][x].shipIndex
+        );
       }
     }
 
