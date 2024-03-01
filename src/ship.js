@@ -1,8 +1,6 @@
 export class Ship {
-    constructor(length, name, sunk) {
+    constructor(length) {
         this.length = length;
-        this.name = name;
-        this.sunk = sunk;
         this.ship = this.createShip();
     }
 
@@ -30,12 +28,13 @@ export class Ship {
           return false;
         }
       }
-    isSunk(length, hitsTaken) {
-        if(length == hitsTaken ) {
-            return true
-        }   
-        else {
-            return false
+      isSunk() {
+        if (this.ship.every(this.checkHit)) {
+          return true;
+        } else {
+          return false;
         }
-    };
+      }
+    
 }
+

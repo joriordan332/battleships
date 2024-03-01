@@ -1,57 +1,42 @@
-import { Gameboard } from './gameboard';
+
 export class Player {
-    constructor(name, turn = false) {
+    constructor(name) {
         this.player = name
-        this.turn = turn
-        this.gameBoardArray = new Gameboard();
-        this.attacks = []
+        this.turn = true
     }
 
-    randomFirstTurn() {
-        const options = ['player1', 'computer']
-        const choice = options[Math.floor(Math.random() * options.length)];
-        return choice;
-    }
+    getName() {
+        return this.name;
+      }
 
-    createPlayer() {
-        const player1 = new Player('player1', 'false');
-        const computer = new Player('computer', 'false');
-        let choice = this.randomFirstTurn();
-        if (choice == 'player1') {
-            player1.turn == 'true'
-        } else {
-            computer.turn = 'true'
+    setName(name){
+        this.name = name;
+      }
+
+    endTurn(player2) {
+        if (this.turn == true) {
+          this.turn = false;
+          player2.startTurn();
         }
-    }
+      }
 
-    currentTurn(computer) {
-        turn = true;
-        computer.turn.set(false);
-    }
-
- 
-
-    computerMoves() {
-        if (this.attacks.length === 100) return false;
-        const cords = [
-          Math.floor(Math.random() * 10),
-          Math.floor(Math.random() * 10),
-        ];
-        if (this.uniqueCoordinates(cords)) {
-          this.attacks.push(cords);
-          return cords;
+      startTurn() {
+        if(this.turn == false){
+          this.turn = true;
         }
-        return this.computerMoves();
-    }
+      }
 
-    uniqueCoordinates(coordinates) {
-        for (let i = 0; i < this.attacks.length; i += 1)
-      if (this.isEqual(this.attacks[i], coordinates)) return false;
-    return true;
-    }
-
-    isEqual = (a, b) => a[0] === b[0] && b[1] === a[1];
-
+      checkTurn() {
+        return this.turn;
+      }
+      
+      attack(x, y, enemyPlayer, enemyBoard) {
+        if (this.checkTurn()) {
+          enemyBoard.receiveAttack(x, y);
+          this.endTurn(enemyPlayer); 
+        }
+      }
     
+   
 }
 

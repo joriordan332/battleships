@@ -1,38 +1,57 @@
 import { Gameboard } from './gameboard';
 import { Player } from './player';
 import { Ship } from './ship';
-let playerGameboard = new Gameboard
-let computerGameboard = new Gameboard
+import { Computer } from "./computer";
+
+let playerBoard = new Gameboard()
+let computerBoard = new Gameboard()
+let p1 = new Player('you');
+let computer = new Computer('computer', p1, playerBoard);
 let carrier = new Ship(5, 'carrier');
 let battleship = new Ship(4, 'battleship');
 let destroyer = new Ship(3, 'destroyer');
 let submarine = new Ship(3, 'submarine');
 let patrolBoat = new Ship(2, 'patrolBoat');
-let p1 = new Player('you');
-let computer = new Player('computer');
-let playerBoard = document.querySelector('.playerBoard');
 
+let ComputerCarrier = new Ship(5, 'carrier');
+let ComputerBattleship = new Ship(4, 'battleship');
+let ComputerDestroyer = new Ship(3, 'destroyer');
+let ComputerSubmarine = new Ship(3, 'submarine');
+let ComputerPatrolBoat = new Ship(2, 'patrolBoat');
+
+let userPrompt = document.querySelector('.userPrompt')
 const battleshipHTML = document.querySelector("#battleship");
 const carrierHTML = document.querySelector("#carrier");
 const submarineHTML = document.querySelector("#submarine");
 const destroyerHTML = document.querySelector("#destroyer");
 const patrolboatHTML = document.querySelector("#patrolBoat");
 const addShips = document.querySelector(".addShips");
+const playerName = document.querySelector(".playerName")
+
+updateDisplay("playerBoard", playerBoard);
+updateDisplay("computerBoard", computerBoard);
+createGameboard('playerBoard');
+createGameboard('computerBoard');
 dragStarter(battleshipHTML);
 dragStarter(carrierHTML);
 dragStarter(submarineHTML);
 dragStarter(destroyerHTML);
 dragStarter(patrolboatHTML);
+computerShips()
 
-export const createGameboard = (() => {
-  
+function createGameboard (boardName) {
+  let boardClass = document.querySelector(`.${boardName}`);
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       let cell = document.createElement("div");
       cell.classList.add("cell");
       cell.setAttribute("data-x", j);
       cell.setAttribute("data-y", i);
-      playerBoard.appendChild(cell);
+      if (boardName == "computerBoard") {
+        cell.addEventListener("click", (e) => {
+          attackEvent(e.target);
+        });
+      } else if (boardName == "playerBoard") {
         cell.addEventListener("dragover", (e) => {
           e.preventDefault();
         });
@@ -40,19 +59,11 @@ export const createGameboard = (() => {
           e.preventDefault();
           dropShip(e);
         });
-      };
-    };
-    const computerBoard = document.querySelector('.computerBoard');
-    for (let i = 0; i < 10; i++) {
-      for (let j = 0; j < 10; j++) {
-        let cell = document.createElement("div");
-        cell.classList.add("cell");
-        cell.setAttribute("data-x", j);
-        cell.setAttribute("data-y", i);
-        computerBoard.appendChild(cell);
       }
+      boardClass.appendChild(cell);
     }
-});
+  }
+}
 
 const submit = document.getElementById('submit');
 submit.addEventListener('click', () => {
@@ -78,58 +89,63 @@ function dropShip(e) {
 
   switch (data) {
     case "carrier":
-      if (playerGameboard.chechIfShipPlacementIsValid(carrier.length, x, y)) {
-        playerGameboard.placeShip(carrier, x, y);
-        console.log(playerGameboard.gameBoardArray)
-        updateDisplay('playerBoard', playerGameboard);
+      if (playerBoard.chechIfShipPlacementIsValid(carrier.length, x, y)) {
+        playerBoard.placeShip(carrier, x, y);
+        console.log(playerBoard.gameBoardArray)
+        updateDisplay('playerBoard', playerBoard);
         let ship = document.querySelector(`#${data}`);
         addShips.removeChild(ship);
         if (addShips.childNodes.length <= 6) {
           addShips.style.display = "none";
+       
         }
       }
       break;
     case "battleship":
-      if (playerGameboard.chechIfShipPlacementIsValid(battleship.length, x, y)) {
-        playerGameboard.placeShip(battleship, x, y);
-        updateDisplay("playerBoard", playerGameboard);
+      if (playerBoard.chechIfShipPlacementIsValid(battleship.length, x, y)) {
+        playerBoard.placeShip(battleship, x, y);
+        updateDisplay("playerBoard", playerBoard);
         let ship = document.querySelector(`#${data}`);
         addShips.removeChild(ship);
         if (addShips.childNodes.length <= 6) {
           addShips.style.display = "none";
+       
         }
       }
         break;
       case "submarine":
-    if (playerGameboard.chechIfShipPlacementIsValid(submarine.length, x, y)) {
-      playerGameboard.placeShip(submarine, x, y);
-      updateDisplay("playerBoard", playerGameboard);
+    if (playerBoard.chechIfShipPlacementIsValid(submarine.length, x, y)) {
+      playerBoard.placeShip(submarine, x, y);
+      updateDisplay("playerBoard", playerBoard);
       let ship = document.querySelector(`#${data}`);
       addShips.removeChild(ship);
       if (addShips.childNodes.length <= 6) {
         addShips.style.display = "none";
+      
       }
     }
     break;
       case "destroyer":
-    if (playerGameboard.chechIfShipPlacementIsValid(destroyer.length, x, y)) {
-      playerGameboard.placeShip(destroyer, x, y);
-      updateDisplay("playerBoard", playerGameboard);
+    if (playerBoard.chechIfShipPlacementIsValid(destroyer.length, x, y)) {
+      playerBoard.placeShip(destroyer, x, y);
+      updateDisplay("playerBoard", playerBoard);
       let ship = document.querySelector(`#${data}`);
       addShips.removeChild(ship);
       if (addShips.childNodes.length <= 6) {
         addShips.style.display = "none";
+        
       }
     }
     break;
       case "patrolBoat":
-    if (playerGameboard.chechIfShipPlacementIsValid(patrolBoat.length, x, y)) {
-      playerGameboard.placeShip(patrolBoat, x, y);
-      updateDisplay("playerBoard", playerGameboard);
+    if (playerBoard.chechIfShipPlacementIsValid(patrolBoat.length, x, y)) {
+      playerBoard.placeShip(patrolBoat, x, y);
+      updateDisplay("playerBoard", playerBoard);
       let ship = document.querySelector(`#${data}`);
       addShips.removeChild(ship);
       if (addShips.childNodes.length <= 6) {
         addShips.style.display = "none";
+        
       }
     }
     break;
@@ -137,11 +153,30 @@ function dropShip(e) {
   }
 
   function computerShips() {
-    computerGameboard.gameBoardArray.placeShip(carrier, 0, 0);
-    computerGameboard.gameBoardArray.placeShip(battleship, 1, 1);
-    computerGameboard.gameBoardArray.placeShip(destroyer, 2, 2);
-    computerGameboard.gameBoardArray.placeShip(submarine, 3, 3);
-    computerGameboard.gameBoardArray.placeShip(patrolBoat, 4, 4);
+    computerBoard.placeShip(ComputerCarrier, 0, 4);
+    computerBoard.placeShip(ComputerBattleship, 1, 0);
+    computerBoard.placeShip(ComputerSubmarine, 2, 0);
+    computerBoard.placeShip(ComputerDestroyer, 3, 0);
+    computerBoard.placeShip(ComputerPatrolBoat, 4, 0);
+}
+
+function attackEvent(element) {
+  let x = element.getAttribute("data-x");
+  let y = element.getAttribute("data-y");
+  p1.attack(x, y, computer, computerBoard);
+  updateDisplay('computerBoard', computerBoard);
+  if(computerBoard.checkIfAllShipSunk()) {
+    endGame(`${playerName.innerHTML}`);
+  }
+ computer.generateRandomAttack();
+ updateDisplay('playerBoard', playerBoard);
+ if(playerBoard.checkIfAllShipSunk()) {
+  endGame("Computer");
+}
+}
+
+function endGame(winner) {
+  userPrompt.textContent = `${winner} is the winner!!`;
 }
 
 function updateDisplay(boardName, board) {
@@ -154,7 +189,7 @@ function updateDisplay(boardName, board) {
         if (
           cell.shipName.checkHit(cell.shipName.getShip()[cell.shipIndex]) ==
           true
-        )  {
+        ) {
           let selectedCell = document.querySelector(
             `.${boardName} [data-x="${x}"][data-y ="${y}"]`
           );
@@ -164,7 +199,7 @@ function updateDisplay(boardName, board) {
         } else if (
           cell.shipName.checkHit(cell.shipName.getShip()[cell.shipIndex]) ==
           false
-        )  {
+        ) {
           if (boardName == "playerBoard") {
             let selectedCell = document.querySelector(
               `.${boardName} [data-x="${x}"][data-y ="${y}"]`
@@ -184,26 +219,4 @@ function updateDisplay(boardName, board) {
   });
 }
 
- 
-  //const ship = document.getElementById('addShips') 
-  //ship.addEventListener('click', console.log('hi'), false);
-//function selectShip(e) {
-//  const userPrompt = document.getElementById('userPrompt')
- // if(e.target.getAttribute('id') === 'battleship') {
-//    shipLength = 4;
-//    userPrompt = 'Place your battleship!';
-//  } else if(e.target.getAttribute('id') === 'carrier') {
-   // shipLength = 5;
-  //  userPrompt = 'Place your carrier!';
- // } else if(e.target.getAttribute('id') === 'submarine') {
- //   shipLength = 3;
- //   userPrompt = 'Place your submarine!';
-//  } else if(e.target.getAttribute('id') === 'destroyer') {
-//    shipLength = 3;
-//    userPrompt = 'Place your destroyer!';
-//  } else if(e.target.getAttribute('id') === 'patrolboat') {
- //   shipLength = 2;
- //   userPrompt = 'Place your patrolboat!';
-//  }
-//}
 

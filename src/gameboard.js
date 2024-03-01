@@ -56,14 +56,17 @@ export class Gameboard {
       return this.missedAttacks;
     }
 
-    checkIfAllShipsSunk() {
-      for (let i = 0; i < 10; i++) {
-        for (let j = 0; j < 10; j++) {
-          if (this.gameBoardArray[i][j].shipName != undefined) {
-            return false
+    checkIfAllShipSunk() {
+      let key = true;
+      this.gameBoardArray.forEach((item) => {
+        item.forEach((element) => {
+          if (element.shipName) {
+            if (element.shipName.isSunk() == false) {
+              key = false;
+            }
           }
-          else return true
-          } 
-      }
+        });
+      });
+      return key;
     }
 }
