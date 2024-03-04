@@ -9,17 +9,18 @@
 <body>
   <div class="container">
     <div class="mainPage" id="mainPage">
-      <h1>Battleship</h1>
-      <button class="shipButtons">Place ships</button>
+      <h1 class="heading">Battleship</h1>
       <div class="userPrompt" id="userPrompt"></div>
-      <div class="player">
-        <div id="playerBoard" class="playerBoard"></div>
-        <div id="playerName" class="playerName"></div>
+      <div class="boards">
+        <div class="player">
+          <div id="playerBoard" class="playerBoard"></div>
+          <div id="playerName" class="playerName"></div>
+        </div>
+        <div class="computer">
+          <div id="computerBoard" class="computerBoard"></div>
+          <div class="computerName">Computer</div>
       </div>
-      <div class="computer">
-        <div id="computerBoard" class="computerBoard"></div>
-        <div class="computerName">Computer</div>
-      </div>
+    </div>
       <div class="addShips" id="addShips">
         <div class="ship" id="carrier" draggable="true">
           <div class="block"></div>
@@ -54,8 +55,11 @@
 
     <div class="playerSelection" id="playerSelection">
       <h1>Battleship</h1>
-      <input id="playerOneInput" type="text" placeholder="Enter Player Name" required>
-      <button id="submit" type="submit" value="submit">Start</button>
+      <img class="shipImage" src="../src/styles/images/ship.svg" alt="an image of a cartoon ship"></img>
+      <div class="input">
+        <input class="playerOneInput" id="playerOneInput" type="text" placeholder="Enter Player Name" required>
+        <button class="submit" id="submit" type="submit" value="submit">Start</button>
+      </div>
     </div>
   </div>
   

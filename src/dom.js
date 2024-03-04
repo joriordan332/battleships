@@ -44,6 +44,7 @@ function createGameboard (boardName) {
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       let cell = document.createElement("div");
+      cell.setAttribute('id', `${boardName}Colour`)
       cell.classList.add("cell");
       cell.setAttribute("data-x", j);
       cell.setAttribute("data-y", i);
@@ -195,6 +196,7 @@ function updateDisplay(boardName, board) {
           );
           selectedCell.textContent = "X";
           selectedCell.classList.add("hit");
+          selectedCell.setAttribute('id', "hit");
           selectedCell.classList.remove("occupied");
         } else if (
           cell.shipName.checkHit(cell.shipName.getShip()[cell.shipIndex]) ==
@@ -205,6 +207,7 @@ function updateDisplay(boardName, board) {
               `.${boardName} [data-x="${x}"][data-y ="${y}"]`
             );
             selectedCell.classList.add("occupied");
+            selectedCell.setAttribute('id', "occupied");
           }
         }
       }
@@ -216,6 +219,7 @@ function updateDisplay(boardName, board) {
     );
     selectedCell.textContent = "X";
     selectedCell.classList.add("missed");
+    selectedCell.setAttribute('id', "missed");
   });
 }
 
