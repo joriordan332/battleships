@@ -79,6 +79,7 @@ submit.addEventListener('click', () => {
 
 function dragStarter(element) {
   element.addEventListener("dragstart", (event) => {
+    userPrompt.innerHTML = "";
     event.dataTransfer.setData("text/plain", event.target.id);
   });
 }
