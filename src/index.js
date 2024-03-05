@@ -81,7 +81,6 @@ submit.addEventListener('click', () => {
   }
 });
 
-
 function dragStarter(element) {
   element.addEventListener("dragstart", (event) => {
     userPrompt.innerHTML = "";
@@ -104,7 +103,6 @@ function dropShip(e) {
         addShips.removeChild(ship);
         if (addShips.childNodes.length <= 6) {
           addShips.style.display = "none";
-       
         }
       }
       break;
@@ -116,7 +114,6 @@ function dropShip(e) {
         addShips.removeChild(ship);
         if (addShips.childNodes.length <= 6) {
           addShips.style.display = "none";
-       
         }
       }
         break;
@@ -128,7 +125,6 @@ function dropShip(e) {
       addShips.removeChild(ship);
       if (addShips.childNodes.length <= 6) {
         addShips.style.display = "none";
-      
       }
     }
     break;
@@ -140,7 +136,6 @@ function dropShip(e) {
       addShips.removeChild(ship);
       if (addShips.childNodes.length <= 6) {
         addShips.style.display = "none";
-        
       }
     }
     break;
@@ -152,7 +147,6 @@ function dropShip(e) {
       addShips.removeChild(ship);
       if (addShips.childNodes.length <= 6) {
         addShips.style.display = "none";
-        
       }
     }
     break;
@@ -179,7 +173,7 @@ function attackEvent(element) {
  updateDisplay('playerBoard', playerBoard);
  if(playerBoard.checkIfAllShipSunk()) {
   endGame("Computer");
-}
+  }
 }
 
 function endGame(winner) {
