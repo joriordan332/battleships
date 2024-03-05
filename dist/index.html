@@ -13,12 +13,16 @@
       <div class="userPrompt" id="userPrompt"></div>
       <div class="boards">
         <div class="player">
-          <div id="playerBoard" class="playerBoard"></div>
-          <div id="playerName" class="playerName"></div>
+          <div class="playerBox">
+            <div id="playerName" class="playerName"></div>
+            <div id="playerBoard" class="playerBoard"></div>
+          </div>
         </div>
         <div class="computer">
-          <div id="computerBoard" class="computerBoard"></div>
-          <div class="computerName">Computer</div>
+          <div class="computerBox">
+            <div id="computerBoard" class="computerBoard"></div>
+            <div class="computerName">Computer</div>
+          </div>
       </div>
     </div>
       <div class="addShips" id="addShips">
@@ -55,10 +59,14 @@
 
     <div class="playerSelection" id="playerSelection">
       <h1>Battleship</h1>
-      <img class="shipImage" src="../src/styles/images/ship.svg" alt="an image of a cartoon ship"></img>
+      <div class="image">
+        <img class="shipImage" src="../src/styles/images/ship.svg" alt="an image of a cartoon ship"></img>
+      </div>
       <div class="input">
-        <input class="playerOneInput" id="playerOneInput" type="text" placeholder="Enter Player Name" required>
-        <button class="submit" id="submit" type="submit" value="submit">Start</button>
+        <div class="inputBox">
+          <input class="playerOneInput" id="playerOneInput" type="text" placeholder="Enter Player Name" required>
+          <button class="submit" id="submit" type="submit" value="submit">Start</button>
+        </div>
       </div>
     </div>
   </div>

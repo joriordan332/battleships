@@ -194,7 +194,7 @@ function updateDisplay(boardName, board) {
           let selectedCell = document.querySelector(
             `.${boardName} [data-x="${x}"][data-y ="${y}"]`
           );
-          selectedCell.textContent = "X";
+          selectedCell.textContent = "•";
           selectedCell.classList.add("hit");
           selectedCell.setAttribute('id', "hit");
           selectedCell.classList.remove("occupied");
@@ -217,9 +217,9 @@ function updateDisplay(boardName, board) {
     let selectedCell = document.querySelector(
       `.${boardName} [data-x="${attack.x}"][data-y ="${attack.y}"]`
     );
-    selectedCell.textContent = "X";
+    selectedCell.textContent = "•";
     selectedCell.classList.add("missed");
-    selectedCell.setAttribute('id', "missed");
+    selectedCell.setAttribute('id', `${boardName}Missed`);
   });
 }
 
