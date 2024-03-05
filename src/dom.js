@@ -68,12 +68,17 @@ function createGameboard (boardName) {
 
 const submit = document.getElementById('submit');
 submit.addEventListener('click', () => {
+  const message = document.getElementById('message');
+  const playerOneInput = document.getElementById('playerOneInput').value;
+  if (playerOneInput == '') {
+    message.innerHTML = 'Please enter your name'
+    return false
+  } else {
   document.getElementById('mainPage').style.display = 'block';
   document.getElementById('playerSelection').style.display = 'none';
-
-  const playerOneInput = document.getElementById('playerOneInput').value;
   const playerName = document.getElementById('playerName');
   playerName.innerHTML = `${playerOneInput}`;
+  }
 });
 
 
