@@ -1,6 +1,8 @@
 # Battleships
 
-Battleship game which made use of proir lessons around test driven development.
+https://joriordan332.github.io/battleships/ 
+
+Battleship game which made use of prior lessons around test driven development.
 
 Project was a steep learning curve and certain features were challenging to implement such as the drag and drop feature for the ships.
 
