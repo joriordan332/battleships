@@ -1,6 +1,6 @@
 # Battleships
 
-https://joriordan332.github.io/battleships/ 
+Live preview - https://joriordan332.github.io/battleships/ 
 
 Battleship game which made use of prior lessons around test driven development.
 
